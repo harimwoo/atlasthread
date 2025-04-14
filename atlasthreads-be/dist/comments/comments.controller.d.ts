@@ -9,7 +9,7 @@ export declare class CommentsController {
     } & {
         __v: number;
     }, never>>;
-    findAll(): Promise<(import("mongoose").Document<unknown, {}, import("./schemas/comment.schema").Comment> & import("./schemas/comment.schema").Comment & {
+    findAll(queryParams: any): Promise<(import("mongoose").Document<unknown, {}, import("./schemas/comment.schema").Comment> & import("./schemas/comment.schema").Comment & {
         _id: import("mongoose").Types.ObjectId;
     } & {
         __v: number;

@@ -20,6 +20,11 @@ export declare class CommentsService {
     } & {
         __v: number;
     })[]>;
+    getCommentsByParentsId(parentId: string): Promise<(import("mongoose").Document<unknown, {}, Comment> & Comment & {
+        _id: import("mongoose").Types.ObjectId;
+    } & {
+        __v: number;
+    })[]>;
     findOne(id: number): string;
     update(id: number, updateCommentDto: UpdateCommentDto): string;
     remove(id: number): string;

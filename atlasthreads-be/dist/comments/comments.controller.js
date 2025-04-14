@@ -25,8 +25,11 @@ let CommentsController = class CommentsController {
     create(createCommentDto) {
         return this.commentsService.create(createCommentDto);
     }
-    findAll() {
-        return this.commentsService.findAll();
+    findAll(queryParams) {
+        if (queryParams.parentId) {
+            return this.commentsService.getCommentsByParentsId(queryParams.parentId);
+        }
+        return this.commentsService.getTopLevelComments();
     }
     findOne(id) {
         return this.commentsService.findOne(+id);
@@ -48,8 +51,9 @@ __decorate([
 ], CommentsController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
+    __param(0, (0, common_1.Query)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], CommentsController.prototype, "findAll", null);
 __decorate([
