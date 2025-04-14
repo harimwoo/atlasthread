@@ -11,9 +11,14 @@ content-type: application/json
 GET http://localhost:3000/comments HTTP/1.1
 
 ###
+GET http://localhost:3000/comments?parentId=67fd4f70689ad9dd38fa06a8 HTTP/1.1
+
+###
 POST http://localhost:3000/comments HTTP/1.1
 content-type: application/json
 
 {
-    "text": "This is a test text"
+    "text": "I am a nested comment inside the fourth text",
+    "userId": "67fd40cb7016735e106064bf",
+    "parentId": "67fd4f70689ad9dd38fa06a8"
 }
