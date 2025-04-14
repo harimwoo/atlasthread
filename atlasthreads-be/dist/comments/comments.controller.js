@@ -27,7 +27,15 @@ let CommentsController = class CommentsController {
     }
     findAll(queryParams) {
         if (queryParams.parentId) {
-            return this.commentsService.getCommentsByParentsId(queryParams.parentId);
+            try {
+                return this.commentsService.getCommentsByParentsId(queryParams.parentId);
+            }
+            catch (e) {
+                throw new common_1.BadRequestException('Something bad happened', {
+                    cause: new Error(e.message),
+                    description: 'Some error description'
+                });
+            }
         }
         return this.commentsService.getTopLevelComments();
     }
