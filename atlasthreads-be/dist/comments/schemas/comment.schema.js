@@ -11,16 +11,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommentSchema = exports.Comment = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
+const mongoose_2 = require("mongoose");
+const user_schema_1 = require("../../users/schemas/user.schema");
 let Comment = class Comment {
-    name;
+    text;
+    likes;
+    user;
+    parent;
 };
 exports.Comment = Comment;
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
-], Comment.prototype, "name", void 0);
+], Comment.prototype, "text", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Number)
+], Comment.prototype, "likes", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ type: mongoose_2.default.Schema.Types.ObjectId, ref: 'User' }),
+    __metadata("design:type", user_schema_1.User)
+], Comment.prototype, "user", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ type: mongoose_2.default.Schema.Types.ObjectId, ref: 'Comment' }),
+    __metadata("design:type", Object)
+], Comment.prototype, "parent", void 0);
 exports.Comment = Comment = __decorate([
-    (0, mongoose_1.Schema)()
+    (0, mongoose_1.Schema)({
+        timestamps: true,
+    })
 ], Comment);
 exports.CommentSchema = mongoose_1.SchemaFactory.createForClass(Comment);
 //# sourceMappingURL=comment.schema.js.map
