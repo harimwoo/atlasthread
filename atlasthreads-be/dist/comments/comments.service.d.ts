@@ -5,8 +5,17 @@ import { Comment } from './schemas/comment.schema';
 export declare class CommentsService {
     private commentModel;
     constructor(commentModel: Model<Comment>);
-    create(createCommentDto: CreateCommentDto): string;
+    create(createCommentDto: CreateCommentDto): Promise<Omit<import("mongoose").Document<unknown, {}, Comment> & Comment & {
+        _id: import("mongoose").Types.ObjectId;
+    } & {
+        __v: number;
+    }, never>>;
     findAll(): Promise<(import("mongoose").Document<unknown, {}, Comment> & Comment & {
+        _id: import("mongoose").Types.ObjectId;
+    } & {
+        __v: number;
+    })[]>;
+    getTopLevelComments(): Promise<(import("mongoose").Document<unknown, {}, Comment> & Comment & {
         _id: import("mongoose").Types.ObjectId;
     } & {
         __v: number;

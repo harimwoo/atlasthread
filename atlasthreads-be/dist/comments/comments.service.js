@@ -23,10 +23,24 @@ let CommentsService = class CommentsService {
         this.commentModel = commentModel;
     }
     create(createCommentDto) {
-        return 'This action adds a new comment';
+        const createdComment = this.commentModel.create({
+            text: createCommentDto.text,
+            parent: createCommentDto.parentId || null,
+            user: createCommentDto.userId,
+        });
+        return createdComment.then((doc) => {
+            return doc.populate(['user', 'parent']);
+        });
     }
     findAll() {
-        return this.commentModel.find().exec();
+        return this.commentModel.find().populate(['user', 'parent']).exec();
+    }
+    getTopLevelComments() {
+        return this.commentModel
+            .find({
+            parent: null
+        })
+            .populate(['user', 'parent']).exec();
     }
     findOne(id) {
         return `This action returns a #${id} comment`;

@@ -5,5 +5,15 @@ POST http://localhost:3000/users HTTP/1.1
 content-type: application/json
 
 {
-    "name": "Jessi Dean"
+    "name": "John Doe"
+}
+###
+GET http://localhost:3000/comments HTTP/1.1
+
+###
+POST http://localhost:3000/comments HTTP/1.1
+content-type: application/json
+
+{
+    "text": "This is a test text"
 }
