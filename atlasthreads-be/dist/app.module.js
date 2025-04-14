@@ -12,12 +12,13 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const users_module_1 = require("./users/users.module");
 const comments_module_1 = require("./comments/comments.module");
+const mongoose_1 = require("@nestjs/mongoose");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [users_module_1.UsersModule, comments_module_1.CommentsModule],
+        imports: [users_module_1.UsersModule, comments_module_1.CommentsModule, mongoose_1.MongooseModule.forRoot('mongodb+srv://userwoo:yes2024@meanstackexample.qgvslt2.mongodb.net/threads?retryWrites=true&w=majority&appName=meanStackExample')],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })
