@@ -9,14 +9,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ValidationErrorFilter = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("mongoose");
-var ValidationError = mongoose_1.Error.ValidationError;
+var ValidationError = mongoose_1.Error;
 let ValidationErrorFilter = class ValidationErrorFilter {
     catch(exception, host) {
         const ctx = host.switchToHttp(), response = ctx.getResponse();
         return response.status(400).json({
             statusCode: 400,
             createdBy: 'ValidationErrorFilter',
-            errors: exception.errors,
+            errors: exception,
         });
     }
 };
